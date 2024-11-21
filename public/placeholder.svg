@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="150" viewBox="0 0 300 150">
+  <rect width="100%" height="100%" fill="#f0f0f0"/>
+  <text x="50%" y="50%" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" dy=".3em" fill="#333333">Placeholder</text>
+
+  <script type="text/javascript">
+    function getParameterByName(name) {
+      name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+      var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+          results = regex.exec(location.search);
+      return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
+
+    var svg = document.querySelector('svg');
+    var rect = svg.querySelector('rect');
+    var text = svg.querySelector('text');
+
+    var width = getParameterByName('width') || 300;
+    var height = getParameterByName('height') || 150;
+    var message = getParameterByName('text') || 'Placeholder';
+
+    svg.setAttribute('width', width);
+    svg.setAttribute('height', height);
+    svg.setAttribute('viewBox', '0 0 ' + width + ' ' + height);
+    rect.setAttribute('width', '100%');
+    rect.setAttribute('height', '100%');
+    text.textContent = message;
+    text.setAttribute('x', '50%');
+    text.setAttribute('y', '50%');
+  </script>
+</svg>
